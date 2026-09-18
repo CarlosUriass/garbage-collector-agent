@@ -5,7 +5,7 @@ class Tablero:
 
         self.ancho = ancho
         self.largo = largo
-        self.tablero = [[" " for _ in range(ancho)] for _ in range(largo)]
+        self.tablero = [["." for _ in range(ancho)] for _ in range(largo)]
 
     def mostrar(self):
         print(self)
@@ -23,3 +23,15 @@ class Tablero:
         if 0 <= fila < self.largo and 0 <= columna < self.ancho:
             return self.tablero[fila][columna]
         raise IndexError("La posición indicada está fuera del tablero.")
+
+    def poner_agente(self, fila, columna):
+        self.poner(fila, columna, "A")
+
+    def poner_paquete(self, fila, columna):
+        self.poner(fila, columna, "P")
+
+    def poner_obstaculo(self, fila, columna):
+        self.poner(fila, columna, "X")
+
+    def vaciar(self):
+        self.tablero = [["." for _ in range(self.ancho)] for _ in range(self.largo)]
